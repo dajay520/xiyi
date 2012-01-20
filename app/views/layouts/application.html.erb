@@ -8,6 +8,10 @@
   <%= javascript_include_tag "application" %>
   <%= javascript_include_tag "script" %>
   <%= csrf_meta_tags %>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.2"></script> 
+<style type="text/css">
+#container{height:98%;width:99%;margin:4px 0px 0px 3px;padding 50px 50px 50px 50px}
+</style>
  <!-- Internet Explorer HTML5 enabling code: -->
     
     <!--[if IE]>
@@ -24,13 +28,14 @@
     <![endif]-->
 </head>
 <body>
+	
 	<section id="page"> <!-- Defining the #page section with the section tag -->
-
+		
         <header> <!-- Defining the header section of the page with the appropriate tag -->
         
             <hgroup>
                 <h1>
-                	洗一洗
+                	WASH
                 </h1>
                 <h3>and a fancy slogan</h3>
             </hgroup>
@@ -52,13 +57,8 @@
                 <div class="line"></div>  <!-- Dividing line -->
                 
                 <article id="article1"> <!-- The new article tag. The id is supplied so it can be scrolled into view. -->
-                    <h2>Photoshoot Effect</h2>
                     
-                    <div class="line"></div>
-                    
-                    <div class="articleBody clear">
-                    
-                    </div>
+                    <%= yield %>
                 </article>
                 
 				<!-- Article 1 end -->
@@ -78,8 +78,9 @@
 		                    	<a href="#"><img src="/633.jpg" width="620" height="340" /></a>
 	                        </figure>
 
-	                       <%= yield %>
+	                       
 	                    </div>
+
 	                </article>
 
 					<!-- Article 2 end -->
