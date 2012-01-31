@@ -10,11 +10,11 @@ class ApplicationController < ActionController::Base
   #过滤器方法
   #登陆校验方法
   def authorize
-    unless User.find_by_id(session[:user_id])
-      respond_to do |format|
-        format.html { redirect_to users_url }
-        format.json { head :ok }
-      end
-    end
+    #unless User.find_by_id(session[:user_id])
+    #  respond_to do |format|
+    #    format.html { redirect_to users_url }
+    #    format.json { head :ok }
+    #  end
+    #end
   end
 end

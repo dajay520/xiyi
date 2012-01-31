@@ -9,16 +9,24 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @users = User.all
-
+    logger.info "进入登陆页面ttttttttt"
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @users }
     end
   end
 
+  #GET /users/login
   def login
-    puts "进入登录页面。"
-
+    logger.info "进入登陆页面ssssssssss"
+    user = User.find_by_phone params[:phone]
+    unless user
+      respond_to do |format|
+        format.html {redirect_to user_url}
+      end
+      session[:user] =  user
+      return
+    end
     respond_to do |format|
       format.html
     end

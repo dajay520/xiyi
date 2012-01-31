@@ -24,15 +24,15 @@
         <div class="right">
           <div class="wrapper">
             <br/><br/><br/>
-            <form action="users/login" id="login" method="post">
+            <form action="/users/login" id="login" method="post">
             <table class="padding:200px 5px">
               <tr>
                 <td>手机号码</td>
                 <td>密码</td>
               </tr>
               <tr class="padding:20px 5px">
-                <td> <input type="text" maxlength="15"  class="input"/></td>
-                <td> <input type="password"  class="input"/></td>
+                <td> <input type="text" maxlength="15" name="phone"  class="input"/></td>
+                <td> <input type="password" name="pwd"  class="input"/></td>
                 <td> <a href="javascript:login.submit();" class="">  登录  </a>&nbsp;&nbsp;&nbsp;&nbsp;</td>
               </tr>
               <tr>
