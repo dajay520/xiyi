@@ -1,4 +1,10 @@
+# encoding: utf-8
 class UsersController < ApplicationController
+
+  def authorize
+
+  end
+
   # GET /users
   # GET /users.json
   def index
@@ -10,6 +16,13 @@ class UsersController < ApplicationController
     end
   end
 
+  def login
+    puts "进入登录页面。"
+
+    respond_to do |format|
+      format.html
+    end
+  end
   # GET /users/1
   # GET /users/1.json
   def show
@@ -41,7 +54,7 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(params[:user])
-
+    @user.pwd=params[:user][:phone]
     respond_to do |format|
       if @user.save
         format.html { redirect_to @user, notice: 'User was successfully created.' }

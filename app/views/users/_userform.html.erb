@@ -1,23 +1,24 @@
 <%= form_for(@user) do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+      <h2><%= pluralize(@user.errors.count, "error","个错误。") %> 新建用户失败:</h2>
 
       <ul>
       <% @user.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
+        <li></li>
       <% end %>
       </ul>
     </div>
   <% end %>
 
   <div class="field">
-    <%= f.label :phone %><br />
-    <%= f.text_field :phone %>
+    <%= f.label :phone %>
+    <%= f.text_field :phone %> <%= (@user.errors.get :phone)[0] %>
   </div>
   <div class="field">
-    <%= f.label :address %><br />
-    <%= f.text_field :address %>
+    <%= f.label :address %>
+    <%= f.text_field :address %> <%= (@user.errors.get :address)[0] %>
   </div>
   <div class="actions">
     <%= f.submit %>
