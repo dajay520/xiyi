@@ -25,22 +25,25 @@
           <div class="wrapper">
             <br/><br/><br/>
             <form action="/users/login" id="login" method="post">
-            <table class="padding:200px 5px">
-              <tr>
-                <td>手机号码</td>
-                <td>密码</td>
-              </tr>
-              <tr class="padding:20px 5px">
-                <td> <input type="text" maxlength="15" name="phone"  class="input"/></td>
-                <td> <input type="password" name="pwd"  class="input"/></td>
-                <td> <a href="javascript:login.submit();" class="">  登录  </a>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-              </tr>
-              <tr>
-                <td> <input type="checkbox" value="0"/>记录我的登录状态。</td>
-
-              </tr>
-
-            </table>
+              <table class="padding:200px 5px">
+                 <%	 if session[:user] %>
+                    用户:<%=session[:user].phone%> 您好。
+                    <a href="/logout">退出</a>
+                 <%	 else %>
+                    <tr>
+                      <td>手机号码</td>
+                      <td>密码</td>
+                    </tr>
+                    <tr class="padding:20px 5px">
+                      <td> <input type="text" maxlength="15" name="phone"  class="input" onblur="if(this.value=='') this.value='请输入手机号码'" onfocus="if(this.value =='请输入手机号码' ) this.value=''"/></td>
+                      <td> <input type="password" name="pwd"  class="input" /></td>
+                      <td> <a href="javascript:login.submit();" class="">  登录  </a>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td> <input type="checkbox" value="0"/>记录我的登录状态。</td>
+                    </tr>
+                 <%	 end %>
+              </table>
             </form>
           </div>
         </div>
@@ -52,7 +55,7 @@
       <article class="col1">
         <%= yield %>
       </article>
-  </header>
+    </header>
     <br/>
     <!-- content -->
     <section id="content">

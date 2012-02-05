@@ -2,10 +2,10 @@ Xiyi::Application.routes.draw do
   resources :users do
     collection do
       post :login
-
+      get :login
     end
   end
-  match "user/login" => "users#login"
+  match "logout" => "users#logout"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

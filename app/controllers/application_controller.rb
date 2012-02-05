@@ -4,9 +4,14 @@ class ApplicationController < ActionController::Base
   before_filter :authorize,:except => :index
 
 
+  def index
+    puts 'thisindex'
+    #redirect_to :template => index
+  end
+
+
+
   protected
-
-
   #过滤器方法
   #登陆校验方法
   def authorize
@@ -17,4 +22,5 @@ class ApplicationController < ActionController::Base
     #  end
     #end
   end
+
 end

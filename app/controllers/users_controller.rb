@@ -9,9 +9,15 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @users = User.all
-    logger.info "进入登陆页面ttttttttt"
+    @user = User.new
+    #logger.info "进入登陆页面ttttttttt"
+    if(session[:user])
+      render :action => :login
+      return
+    end
+
     respond_to do |format|
-      format.html # index.html.erb
+      format.html # index.html
       format.json { render json: @users }
     end
   end
@@ -19,17 +25,23 @@ class UsersController < ApplicationController
   #GET /users/login
   def login
     logger.info "进入登陆页面ssssssssss"
-    user = User.find_by_phone params[:phone]
-    unless user
+    @user = User.find_by_phone params[:phone]
+    unless @user
+
       respond_to do |format|
         format.html {redirect_to user_url}
       end
-      session[:user] =  user
+
       return
     end
-    respond_to do |format|
-      format.html
-    end
+    session[:user]=@user
+    redirect_to
+  end
+
+  def logout
+    session[:user] = nil
+    @users = User.all
+    redirect_to :action => :index
   end
   # GET /users/1
   # GET /users/1.json
@@ -68,7 +80,7 @@ class UsersController < ApplicationController
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render json: @user, status: :created, location: @user }
       else
-        format.html { render action: "new" }
+        format.html { render action: "index" }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end

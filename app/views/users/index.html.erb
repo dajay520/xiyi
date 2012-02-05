@@ -1,51 +1,41 @@
-<h2>Listing users</h2>
+<article class="col1">
+  <ul class="tabs">
+    <li><a href="#" class="active">快速注册 开始洗衣</a></li>
+  </ul>
+  <div class="tabs_cont">
+    <form id="form_1" action="/users" method="post">
+      <div class="bg">
+        <div class="wrapper"><input type="text" name="user[phone]" class="input">手机号码</div> 
+        <p id="err_msg"> <% if @user.errors.any? %> <%= (@user.errors.get :phone)[0] %> <% end %> </p>
+        <div class="wrapper"><select  style="width: 100px" ><option>江苏省</option></select><select class="sel"><option>扬州市</option></select></div>
+        <div class="wrapper"><input type="text" name="user[address]" class="input">详细地址</div>
+        <p id="err_msg"><% if @user.errors.any? %> <%= (@user.errors.get :address)[0] %> <%end%> </p>
+        <div class="wrapper"><input type="password" name="user[pwd]" class="input">密码</div>
+        <p id="err_msg"> <% if @user.errors.any? %>  <%= (@user.errors.get :pwd)[0] %> <%end%> </p>
+        <div class="wrapper"><input type="password" name="user[pwd_confirmation]" class="input">重复输入一次密码</div>
+        <div class="wrapper pad_bot1">
+          <a href="#" class="button" onclick="document.getElementById('form_1').submit()">开始洗</a>
+        </div>
+      </div>
+    </form>
+    <%= form_for(@user) do |f| %>
 
-<table>
-  <tr>
-    <th>Phone</th>
-    <th>Address</th>
-    <th>Email</th>
-    <th>Name</th>
-    <th>Jifen</th>
-    <th>City</th>
-    <th>State</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+        <div class="field">
+          <%= f.label :phone %>
+          <%= f.text_field :phone %> <%= (@user.errors.get :phone)[0] %>
+        </div>
+        <div class="field">
+          <%= f.label :address %>
+          <%= f.text_field :address %> <%= (@user.errors.get :address)[0] %>
+        </div>
+        <div class="actions">
+          <%= f.submit %>
+        </div>
+        <div>
+          <%= f.label '密码' %><br />
+          <%= f.password_field :pwd_confirmation %>
+        </div>
+    <% end %>
+  </div>
+</article>
 
-<% @users.each do |user| %>
-  <tr>
-    <td><%= user.phone %></td>
-    <td><%= user.address %></td>
-    <td><%= user.email %></td>
-    <td><%= user.name %></td>
-    <td><%= user.jifen %></td>
-    <td><%= user.city %></td>
-    <td><%= user.state %></td>
-    <td><%= link_to 'Show', user %></td>
-    <td><%= link_to 'Edit', edit_user_path(user) %></td>
-    <td><%= link_to 'Destroy', user, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<div class="articleBody clear">
-	<figure>
-    	<div id="container"></div>
-		<script>
-			var map = new BMap.Map("container"); 
-			var point = new BMap.Point(116.404, 39.915);  // 创建点坐标  
-			map.centerAndZoom("杭州市",13);
-			var local = new BMap.LocalSearch(map, {
-			  renderOptions:{map: map}
-			});
-			//local.search("万塘路18号");
-		</script>
-    </figure>
-</div>
-<br />
-<div class="wall-of-buttons">
-<a  class="large magenta button" href="#">haha</a>
-</div>
-<%= link_to 'New User', new_user_path %>
