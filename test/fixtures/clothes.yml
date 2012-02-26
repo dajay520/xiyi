@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  image_url: MyText
+  type: 
+  price: 1
+  create_date: 2012-02-11
+  stop_date: 2012-02-11
+
+two:
+  name: MyString
+  image_url: MyText
+  type: 
+  price: 1
+  create_date: 2012-02-11
+  stop_date: 2012-02-11

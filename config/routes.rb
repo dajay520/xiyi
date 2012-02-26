@@ -1,4 +1,6 @@
 Xiyi::Application.routes.draw do
+  resources :clothes
+
   resources :users do
     collection do
       post :login
@@ -6,7 +8,9 @@ Xiyi::Application.routes.draw do
     end
   end
   match "logout" => "users#logout"
-
+  match "wash_list" =>  "wash#clothes_list"
+  match "wash_setting" => "wash#wash_setting"
+  match "wash_select" =>  "wash#wash_select"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -62,5 +66,5 @@ Xiyi::Application.routes.draw do
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
-  # match ':controller(/:action(/:id(.:format)))'
+  match ':controller(/:action(/:id(.:format)))'
 end

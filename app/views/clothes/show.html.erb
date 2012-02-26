@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @clothe.name %>
+</p>
+
+<p>
+  <b>Image url:</b>
+  <%= @clothe.image_url %>
+</p>
+
+<p>
+  <b>Type:</b>
+  <%= @clothe.type %>
+</p>
+
+<p>
+  <b>Price:</b>
+  <%= @clothe.price %>
+</p>
+
+<p>
+  <b>Create date:</b>
+  <%= @clothe.create_date %>
+</p>
+
+<p>
+  <b>Stop date:</b>
+  <%= @clothe.stop_date %>
+</p>
+
+
+<%= link_to 'Edit', edit_clothe_path(@clothe) %> |
+<%= link_to 'Back', clothes_path %>

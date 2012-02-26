@@ -9,16 +9,16 @@ body {background:url(/img/bg.jpg) top center repeat;border:0;font:13px Arial, He
 .ic, .ic a {border:0;float:right;background:#fff;color:#f00;width:50%;line-height:10px;font-size:10px;margin:-220% 0 0 0;overflow:hidden;padding:0}
 .css3 {border-radius:8px;-moz-border-radius:8px;-webkit-border-radius:8px;box-shadow:0 0 4px rgba(0, 0, 0, .4);-moz-box-shadow:0 0 4px rgba(0, 0, 0, .4);-webkit-box-shadow:0 0 4px rgba(0, 0, 0, .4);behavior:url(/assets/PIE.htc);position:relative}
 .body1 {background:url(/img/bg_footer.jpg) top center repeat;height:100px}
-.main {margin:0 auto;width:960px;position:relative}
+.main {margin:0 auto;width:960px;}
 .block {height:100px}
 .extra {min-height:100%;height:auto !important;height:100%;margin:0 auto -100px}
 body, html {height:100%}
 a {color:#f09e2f;text-decoration:underline;outline:none}
 a:hover {text-decoration:none}
-h1 {float:left;padding:17px 0 0 0}
+#h1 {float:left;padding:17px 0 0 0;font-size:40px;}
 h2 {font-size:40px;text-transform:uppercase;font-weight:600;color:#3081c8;line-height:52px;padding:2px 0 33px 0}
 h3 {font-size:26px;color:#fff;color:#fff;padding-left:35px;line-height:57px;margin-bottom:30px;background:#3081c8;border-radius:4px;-moz-border-radius:4px;-webkit-border-radius:4px;behavior:url(/assets/PIE.htc);position:relative;text-transform:uppercase;font-weight:600}
-#err_msg {color: #f00}
+#err_msgs {color: #f00}
 /* header */
 header {overflow:hidden;width:100%;height:494px}
 #logo {background:url(/img/logo.jpg) no-repeat;display:block;width:354px;height:101px;text-indent:-5000px}
@@ -49,9 +49,12 @@ header {overflow:hidden;width:100%;height:494px}
 .tabs {width:100%;overflow:hidden}
 .tabs li {float:left;padding-right:1px}
 .tabs .end {padding:0}
-.tabs a {display:block;width:150px;font-size:13px;line-height:31px;color:#fff;text-transform:uppercase;text-align:center;border-radius:4px 4px 0 0;-moz-border-radius:4px 4px 0 0;-webkit-border-radius:4px 4px 0 0;behavior:url(/assets/PIE.htc);position:relative;background:url(/img/tabs_bg.gif) bottom repeat-x #3081c8;text-decoration:none}
+.tabs a {display:block;width:150px;font-size:13px;line-height:31px;color:#fff;text-transform:uppercase;text-align:center;border-radius:4px 4px 0 0;-moz-border-radius:4px 4px 0 0;-webkit-border-radius:4px 4px 0 0;behavior:url(/assets/PIE.htc);position:relative;background:url(/img/tabs_bg.gif) bottom repeat-x #3081c8;text-decoration:none;}
 .tabs a:hover, .tabs .active {background:url(/img/bg_form.gif) repeat}
 .tabs_cont {border-radius:0 0 4px 4px;-moz-border-radius:0 0 4px 4px;-webkit-border-radius:0 0 4px 4px;behavior:url(/assets/PIE.htc);position:relative;background:url(/img/bg_form.gif) repeat;padding:10px 35px 28px;width: 280px}
+.tabs_cart {border-radius:0 0 4px 4px;-moz-border-radius:0 0 4px 4px;-webkit-border-radius:0 0 4px 4px;behavior:url(/assets/PIE.htc);position:relative;background:url(/img/bg_form.gif) 0 0 repeat;padding:10px 35px 28px;width: 150px;color:#fff;}
+.tabs_cart a{color: #FFF}
+.step_bar{margin:0 auto;width: 950px;}
 .sel select{width:200px}
 .img {position:absolute;right:0px;top:203px}
 .text {padding:7px 0 0 5px;width:400px}
@@ -83,17 +86,18 @@ footer a {color:#439deb}
 #ContactForm a {margin-left:10px;float:right;width:86px;text-align:center;padding:0}
 #ContactForm .input {float:right;margin-right:222px;width:335px;height:17px;border:1px solid #dcdcdc;background:#fff;padding:5px;margin-bottom:6px;color:#323232;font:13px Arial, Helvetica, sans-serif}
 #ContactForm textarea {overflow:auto;float:right;width:557px;height:307px;border:1px solid #dcdcdc;background:#fff;padding:5px;margin-bottom:16px;color:#323232;font:13px Arial, Helvetica, sans-serif}
-#form_1 {color:#fff;line-height:24px}
-#form_1 .input {float:right;background:#fff;width:133px;padding:1px 8px;font:12px Arial, Helvetica, sans-serif ;color:#7f7f7f;height:16px;margin-top:3px}
-#form_1 a {color:#439deb}
-#form_1 .radio {float:left;padding-right:16px}
-#form_1 .radio.end {padding-right:0}
-#form_1 .radio input {float:left;margin:5px 5px 0 0px;height:12px;width:12px;overflow:hidden;padding:0}
-#form_1 .check_box {margin-top:12px}
-#form_1 .input2 {width:62px}
-#form_1 select {width:58px;height:18px;padding:1px;margin-left:5px;margin-top:5px;display:inline-block}
-#form_1 .button {float:right;font-size:12px;color:#fff;width:66px;line-height:26px;text-decoration:none;text-transform:uppercase;text-align:center;background:#3081c8;border-radius:4px;-moz-border-radius:4px;-webkit-border-radius:4px;behavior:url(/assets/PIE.htc);position:relative;padding:0}
-
+#new_user {color:#fff;line-height:24px}
+#new_user .input {float:right;background:#fff;width:133px;padding:1px 8px;font:12px Arial, Helvetica, sans-serif ;color:#7f7f7f;height:16px;margin-top:3px}
+#new_user a {color:#439deb}
+#new_user .radio {float:left;padding-right:16px}
+#new_user .radio.end {padding-right:0}
+#new_user .radio input {float:left;margin:5px 5px 0 0px;height:12px;width:12px;overflow:hidden;padding:0}
+#new_user .check_box {margin-top:12px}
+#new_user .input2 {width:62px}
+#new_user select {width:58px;height:18px;padding:1px;margin-left:5px;margin-top:5px;display:inline-block}
+#new_user .button {float:right;font-size:12px;color:#fff;width:66px;line-height:26px;text-decoration:none;text-transform:uppercase;text-align:center;background:#3081c8;border-radius:4px;-moz-border-radius:4px;-webkit-border-radius:4px;behavior:url(/assets/PIE.htc);position:relative;padding:0}
+.cart_img {width:75px;height: 75px;display:block;color:#fff}
+.cart_a{color: #fff;display:block;margin-bottom: 5px}
 
 /* light button*/
 @-webkit-keyframes bigAssButtonPulse {

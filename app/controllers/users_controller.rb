@@ -8,17 +8,15 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
-    @user = User.new
     #logger.info "进入登陆页面ttttttttt"
+    @user = User.new
     if(session[:user])
-      render :action => :login
+      redirect_to "/wash_list"
       return
     end
 
     respond_to do |format|
       format.html # index.html
-      format.json { render json: @users }
     end
   end
 
@@ -35,12 +33,11 @@ class UsersController < ApplicationController
       return
     end
     session[:user]=@user
-    redirect_to
+    redirect_to "/wash_list"
   end
 
   def logout
     session[:user] = nil
-    @users = User.all
     redirect_to :action => :index
   end
   # GET /users/1
@@ -74,10 +71,12 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(params[:user])
-    @user.pwd=params[:user][:phone]
+    #@user.pwd=params[:user][:phone]
+
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        session[:user] = @user
+        format.html { redirect_to :action=>:index, notice: 'User was successfully created.' }
         format.json { render json: @user, status: :created, location: @user }
       else
         format.html { render action: "index" }

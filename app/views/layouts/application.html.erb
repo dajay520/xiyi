@@ -6,7 +6,10 @@
   <%= stylesheet_link_tag    "reset" ,:media => "all" %>
   <%= stylesheet_link_tag    "layout" ,:media => "all" %>
   <%= stylesheet_link_tag    "style" ,:media => "all" %>
-  <%= javascript_include_tag "jquery-1.4.2" %>
+  <%= stylesheet_link_tag   "960_24_col",:media => "all" %>
+  <%= stylesheet_link_tag    "jquery-ui-1.8.17.custom" ,:media => "all" %>
+  <%= javascript_include_tag "jquery-1.7.1.min" %>
+  <%= javascript_include_tag "jquery-ui-1.8.17.custom.min" %>
   <%= javascript_include_tag "cufon-replace" %>
   <script src="/assets/Myriad_Pro_600.font.js?body=1" type="text/javascript"></script>
   <!--[if lt IE 9]>
@@ -19,8 +22,8 @@
   <div class="main">
     <!-- header -->
     <header>
-      <div class="wrapper">
-        <h1><a href="#" id="logo">Around the World</a></h1>
+      <div>
+        <h1 id="h1"><a href="#" id="logo">Around the World</a></h1>
         <div class="right">
           <div class="wrapper">
             <br/><br/><br/>
@@ -52,13 +55,13 @@
         <ul id="menu">
         </ul>
       </nav>
-      <article class="col1">
-        <%= yield %>
-      </article>
+
     </header>
     <br/>
+
     <!-- content -->
     <section id="content">
+      <%= yield %>
     </section>
     <!-- / content -->
   </div>

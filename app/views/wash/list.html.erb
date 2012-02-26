@@ -1,0 +1,157 @@
+<style type="text/css">
+    #progressBar{
+        padding-bottom:0.5em;
+        border:1px solid #6666cc;
+    }
+    #progressBar p{
+        font-weight:bold;
+        padding:2px 0;
+        text-align:center;
+    }
+    #steps{
+        padding:2px;
+        background-color:white;
+    }
+    #step_0{
+        padding:2px 0.5em 2px 0;
+    }
+    #step_1{
+        text-align:center;
+        background: #CCCCCC;
+        color:#fff;
+    }
+    #step_2{
+        text-align:center;
+        background: #6666cc;
+        color:#fff;
+    }
+    #step_2 p{
+        padding:2px 0 2px 0;
+    }
+    #step_3{
+        text-align:center;
+        background: #ccccff;
+        color:#fff;
+    }
+    #arrow_1{
+        background: #CCCCCC url(/img/ar_progress_sprite.png) -3890px 50%;
+        width:30px;
+    }
+    #arrow_2{
+        background: #6666cc url(/img/ar_progress_sprite.png) -2333px 50%;
+        width:30px;
+    }
+    #arrow_3{
+        background: #ccccff url(/img/ar_progress_sprite.png) -792px 50%;
+        width:20px;
+    }
+</style>
+<style type="text/css">
+
+    ul { list-style:none;}
+    img { border:0px;}
+    a { color:#05a; text-decoration:none;}
+    a:hover { color:#f00;}
+    #layout{width:800px}
+    #layout ul li{width:150px;border:1px; float:left; margin:20px 0 0px 20px; text-align:center;}
+    #layout ul li a { display:block;}
+    #layout ul li a img{padding:1px; border:1px solid #e1e1e1; margin-bottom:3px; display:block;width:150px; height:150px}
+    #layout ul li a:hover img{border:1px solid #f98510;}
+</style>
+<div class="container_24">
+
+
+  <div class="grid_14">
+    <table  cellpadding="0" cellspacing="0" border="0" class="step_bar"
+           id="progressBar">
+      <tr valign="center">
+        <td id="step_0">
+          <p>
+            您目前的进度
+          </p>
+        </td>
+        <td id="steps">
+          <table width="100%" cellpadding="0" cellspacing="0" border="0">
+            <tr valign="center">
+              <td id="step_1">
+                <p>
+                  登陆/注册
+                </p>
+              </td>
+              <td id='arrow_1'>
+                &nbsp;
+              </td>
+              <td id="step_2">
+                <p>
+                  选择需要洗的衣服
+                </p>
+              </td>
+              <td id='arrow_2'>
+                &nbsp;
+              </td>
+              <td id="step_3">
+                <p>
+                  设置取送衣物时间
+                </p>
+              </td>
+              <td id='arrow_3'>
+                &nbsp;
+              </td>
+            </tr>
+          </table>
+      </tr>
+    </table>
+
+  </div>
+
+  <script type="text/javascript">
+      $(document).ready(function() {
+
+          $("#layout  a").click(function(){
+              //判断购物车中是否已经有相同的衣服
+
+              var aa = $(this).clone();
+              var img = $(aa).find("img");
+              $(img).addClass("cart_img");
+              $(aa).addClass("cart_a");
+              $(aa).append("x<span id='count'>1</span>");
+              $("#orderCart").append(aa);
+
+              //添加到form
+              $("#select_clothes").append("<input type='hidden' name='clothes_id[]' value='" + img.attr("id") +"'/>");
+
+          });
+      });
+  </script>
+
+
+</div>
+<div class="container_24">
+  <div class="grid_6">
+
+    <article class="col4" style="">
+      <ul class="tabs">
+        <li><a href="#" class="active">洗衣桶</a></li>
+      </ul>
+      <form action="/wash_select" method="post" id="select_clothes">
+        <input id="tokentag" type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
+      </form>
+      <div class="tabs_cart bg" id="orderCart">
+          <p><%= notice %></p>
+          <a onclick="javascript:select_clothes.submit();">提交</a>
+      </div>
+    </article>
+  </div>
+  <div class="grid_18">
+    <div id="layout" >
+      <ul>
+    <% @clothes.each do |clothe| %>
+            <li><a ><img id="<%= clothe.id%>" src="<%= clothe.image_url%>"  /><%= clothe.name %></a></li>
+
+    <% end %>
+      </ul>
+    </div>
+  </div>
+  <a href="/wash_setting">下一步</a>
+</div>
+

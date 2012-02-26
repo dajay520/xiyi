@@ -1,0 +1,144 @@
+<style type="text/css">
+    #progressBar{
+        padding-bottom:0.5em;
+        border:1px solid #6666cc;
+    }
+    #progressBar p{
+        font-weight:bold;
+        padding:2px 0;
+        text-align:center;
+    }
+    #steps{
+        padding:2px;
+        background-color:white;
+    }
+    #step_0{
+        padding:2px 0.5em 2px 0;
+    }
+    #step_1{
+        text-align:center;
+        background: #CCCCCC;
+        color:#fff;
+    }
+    #step_2{
+        text-align:center;
+        background: #CCCCCC;
+        color:#fff;
+    }
+    #step_2 p{
+        padding:2px 0 2px 0;
+    }
+    #step_3{
+        text-align:center;
+        background: #ccccff;
+        color:#fff;
+    }
+    #arrow_1{
+        background: #CCCCCC url(/img/ar_progress_sprite.png) -3890px 50%;
+        width:30px;
+    }
+    #arrow_2{
+        background: #6666cc url(/img/ar_progress_sprite.png) -2333px 50%;
+        width:30px;
+    }
+    #arrow_3{
+        background: #ccccff url(/img/ar_progress_sprite.png) -792px 50%;
+        width:20px;
+    }
+</style>
+<div class="step_bar" style="margin: 0 auto">
+  <table width="800" cellpadding="0" cellspacing="0" border="0"  class="step_bar"
+         id="progressBar">
+    <tr valign="center">
+      <td id="step_0">
+        <p>
+          您目前的进度:3.设定取送衣物时间
+        </p>
+      </td>
+      <td id="steps">
+        <table width="100%" cellpadding="0" cellspacing="0" border="0">
+          <tr valign="center">
+            <td id="step_1">
+              <p>
+                1.登陆/注册
+              </p>
+            </td>
+            <td id='arrow_1'>
+              &nbsp;
+            </td>
+            <td id="step_2">
+              <p>
+                2.选择&nbsp;&nbsp;&nbsp;&nbsp;衣服&nbsp;&nbsp;&nbsp;&nbsp;
+              </p>
+            </td>
+            <td id='arrow_2'>
+              &nbsp;
+            </td>
+            <td id="step_3">
+              <p>
+                3.设置取送衣物时间
+              </p>
+            </td>
+            <td id='arrow_3'>
+              &nbsp;
+            </td>
+          </tr>
+        </table>
+    </tr>
+  </table>
+
+</div>
+
+<script type="text/javascript">
+    jQuery(function($){
+        $.datepicker.regional['zh-CN'] = {
+            closeText: '关闭',
+            prevText: '<上月',
+            nextText: '下月>',
+            currentText: '今天',
+            monthNames: ['一月','二月','三月','四月','五月','六月',
+                '七月','八月','九月','十月','十一月','十二月'],
+            monthNamesShort: ['一月','二月','三月','四月','五月','六月',
+                '七月','八月','九月','十月','十一月','十二月'],
+            dayNames: ['星期日','星期一','星期二','星期三','星期四','星期五','星期六'],
+            dayNamesShort: ['周日','周一','周二','周三','周四','周五','周六'],
+            dayNamesMin: ['日','一','二','三','四','五','六'],
+            weekHeader: '周',
+            dateFormat: 'yy年mm月dd日',
+            firstDay: 1,
+            isRTL: false,
+            showMonthAfterYear: true,
+            yearSuffix: '年'};
+        $.datepicker.setDefaults($.datepicker.regional['zh-CN']);
+    });
+
+    $(function(){
+        $("#getDate").datepicker( {
+            //showMonthAfterYear: true, // 月在年之后显示
+            //changeMonth: true,   // 允许选择月份
+            //changeYear: true,   // 允许选择年份
+            //dateFormat:'yy-mm-dd',  // 设置日期格式
+            //closeText:'关闭',   // 只有showButtonPanel: true才会显示出来
+            //duration: 'fast',
+           // showAnim:'fadeIn',
+            //showOn:'button',   // 在输入框旁边显示按钮触发，默认为：focus。还可以设置为both
+            //buttonImage: 'images/commons/calendar.gif',   // 按钮图标
+           // buttonImageOnly: true,        // 不把图标显示在按钮上，即去掉按钮
+            //buttonText:'选择日期',
+           // showButtonPanel: true,
+           // showOtherMonths: true
+            //appendText: '(yyyy-mm-dd)',
+        });
+
+
+    })
+</script>
+<div>
+  <form action="/wash_setting" method="post">
+    <input id="tokentag" type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
+    上门取送时间<input id="getDate" name="get_date" type="text" value="2012-02-22" /> <select name="get_time"><option value="1">上午(8:30-11:30)</option> <option value="2">下午(1:00-5:00)</option> </select>   <br/>
+         <input id="btn" class="" type="submit" value="完成"/>
+  </form>
+
+
+</div>

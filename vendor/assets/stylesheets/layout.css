@@ -3,13 +3,14 @@
 .col2 {width:650px}
 .cols {width:304px}
 .col3 {width:393px}
+.col4 {width:100px;margin: 20px;}
 /* index.html */
 #page1 h1 {padding:27px 0 0 0}
 #page1 #search {padding:46px 0 10px 0}
 #page1 #menu {margin-top:32px;margin-bottom:35px}
 #page1 .img {right:-13px;top:236px}
 #page1 .text {text-align:center;padding:0;width:100%}
-#page1 header {height:612px}
+#page1 header {height:140px}
 /* index-1.html */
 /* index-2.html */
 #page3 .cols {width:215px}

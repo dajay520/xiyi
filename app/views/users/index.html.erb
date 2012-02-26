@@ -3,39 +3,22 @@
     <li><a href="#" class="active">快速注册 开始洗衣</a></li>
   </ul>
   <div class="tabs_cont">
-    <form id="form_1" action="/users" method="post">
+      <%= form_for(@user) do |f| %>
       <div class="bg">
-        <div class="wrapper"><input type="text" name="user[phone]" class="input">手机号码</div> 
-        <p id="err_msg"> <% if @user.errors.any? %> <%= (@user.errors.get :phone)[0] %> <% end %> </p>
+        <div class="wrapper"><%= f.text_field :phone,:class => "input" %>手机号码</div>
+        <p id="err_msgs">  <%= (@user.errors.get :phone)[0] %> </p>
         <div class="wrapper"><select  style="width: 100px" ><option>江苏省</option></select><select class="sel"><option>扬州市</option></select></div>
-        <div class="wrapper"><input type="text" name="user[address]" class="input">详细地址</div>
-        <p id="err_msg"><% if @user.errors.any? %> <%= (@user.errors.get :address)[0] %> <%end%> </p>
-        <div class="wrapper"><input type="password" name="user[pwd]" class="input">密码</div>
-        <p id="err_msg"> <% if @user.errors.any? %>  <%= (@user.errors.get :pwd)[0] %> <%end%> </p>
-        <div class="wrapper"><input type="password" name="user[pwd_confirmation]" class="input">重复输入一次密码</div>
+        <div class="wrapper"><%= f.text_field :address,:class => "input" %>详细地址</div>
+        <p id="err_msgs"> <%= (@user.errors.get :address)[0] %> </p>
+        <div class="wrapper"><%= f.password_field :pwd,:class => "input" %>密码</div>
+        <p id="err_msgs">   <%= (@user.errors.get :pwd)[0] %> </p>
+        <div class="wrapper"><%= f.password_field :pwd_confirmation,:class => "input" %>重复输入一次密码</div>
         <div class="wrapper pad_bot1">
-          <a href="#" class="button" onclick="document.getElementById('form_1').submit()">开始洗</a>
+          <a href="#" class="button" onclick="document.getElementById('new_user').submit()">开始洗</a>
         </div>
       </div>
-    </form>
-    <%= form_for(@user) do |f| %>
+        <% end %>
 
-        <div class="field">
-          <%= f.label :phone %>
-          <%= f.text_field :phone %> <%= (@user.errors.get :phone)[0] %>
-        </div>
-        <div class="field">
-          <%= f.label :address %>
-          <%= f.text_field :address %> <%= (@user.errors.get :address)[0] %>
-        </div>
-        <div class="actions">
-          <%= f.submit %>
-        </div>
-        <div>
-          <%= f.label '密码' %><br />
-          <%= f.password_field :pwd_confirmation %>
-        </div>
-    <% end %>
   </div>
 </article>
 

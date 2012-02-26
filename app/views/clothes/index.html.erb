@@ -1,0 +1,33 @@
+<h1>Listing clothes</h1> <br/>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Image url</th>
+    <th>Type</th>
+    <th>Price</th>
+    <th>Create date</th>
+    <th>Stop date</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @clothes.each do |clothe| %>
+  <tr>
+    <td><%= clothe.name %></td>
+    <td><%= clothe.image_url %></td>
+    <td><%= clothe.type %></td>
+    <td><%= clothe.price %></td>
+    <td><%= clothe.create_date %></td>
+    <td><%= clothe.stop_date %></td>
+    <td><%= link_to 'Show', clothe %></td>
+    <td><%= link_to 'Edit', edit_clothe_path(clothe) %></td>
+    <td><%= link_to 'Destroy', clothe, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Clothe', new_clothe_path %>
