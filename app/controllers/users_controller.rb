@@ -22,22 +22,33 @@ class UsersController < ApplicationController
 
   #GET /users/login
   def login
-    logger.info "进入登陆页面ssssssssss"
-    @user = User.find_by_phone params[:phone]
-    unless @user
 
+    @user = User.find_by_phone params[:phone]
+    unless @user and @user.pwd == params[:pwd]
       respond_to do |format|
         format.html {redirect_to user_url}
       end
-
       return
     end
+
     session[:user]=@user
+    #管理员登陆
+    if @user.role_type == 'A'
+      redirect_to "/admin/show"
+      return
+    end
+
+    #普通用户登陆
+    if(params[:remember_me]=='0')
+      cookies[:remember_me]=@user.id
+      puts cookies[:remember_me]
+    end
     redirect_to "/wash_list"
   end
 
   def logout
     session[:user] = nil
+    cookies.delete :remember_me
     redirect_to :action => :index
   end
   # GET /users/1
@@ -72,11 +83,12 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     #@user.pwd=params[:user][:phone]
-
+    #设置角色为个人用户
+    @user.role_type='P'
     respond_to do |format|
       if @user.save
         session[:user] = @user
-        format.html { redirect_to :action=>:index, notice: 'User was successfully created.' }
+        format.html { render :template =>  "/users/reg_result" }
         format.json { render json: @user, status: :created, location: @user }
       else
         format.html { render action: "index" }

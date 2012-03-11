@@ -1,0 +1,36 @@
+<div class="container_24">
+   <div class="grid_4 right">
+       <a>洗衣记录</a>
+   </div>
+
+  <div class="grid_20">
+    <table>
+      <thead>
+        <tr>
+          <td>上门取送时间范围</td>
+          <td>衣服列表</td>
+          <td>处理进度</td>
+        </tr>
+      </thead>
+      <tbody>
+
+          <% @user.orders.each do |ord| %>
+          <tr>
+              <td>
+                <% if ord.get_date %>
+                    <%= ord.get_date.strftime('%Y-%m-%d')%>
+                <% end %>
+                <%= ord.get_time_begin.strftime('%H:%M') %> ~ <%= ord.get_time_end.strftime('%H:%M') %></td>
+              <td>
+                <% ord.clothes.each do |clo| %>
+                   <ul><%= clo.name %></ul>
+                <% end %>
+              </td>
+          </tr>
+          <% end %>
+
+      </tbody>
+    </table>
+
+  </div>
+</div>

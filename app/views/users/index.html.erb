@@ -7,7 +7,7 @@
       <div class="bg">
         <div class="wrapper"><%= f.text_field :phone,:class => "input" %>手机号码</div>
         <p id="err_msgs">  <%= (@user.errors.get :phone)[0] %> </p>
-        <div class="wrapper"><select  style="width: 100px" ><option>江苏省</option></select><select class="sel"><option>扬州市</option></select></div>
+        <div class="wrapper"><select  style="width: 100px" ><option>江苏省</option></select><select class="sel" style="width: 100px"><option >扬州市</option></select></div>
         <div class="wrapper"><%= f.text_field :address,:class => "input" %>详细地址</div>
         <p id="err_msgs"> <%= (@user.errors.get :address)[0] %> </p>
         <div class="wrapper"><%= f.password_field :pwd,:class => "input" %>密码</div>

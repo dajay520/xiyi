@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120226070703) do
+ActiveRecord::Schema.define(:version => 20120311065458) do
 
   create_table "clothes", :force => true do |t|
     t.string   "name"
@@ -37,7 +37,27 @@ ActiveRecord::Schema.define(:version => 20120226070703) do
     t.datetime "updated_at",     :null => false
     t.time     "get_time_begin"
     t.time     "get_time_end"
+    t.integer  "user_id"
+    t.datetime "get_date"
   end
+
+  create_table "roles", :force => true do |t|
+    t.string   "type"
+    t.string   "name"
+    t.string   "email"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "sessions", :force => true do |t|
+    t.string   "session_id", :null => false
+    t.text     "data"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
+  add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
 
   create_table "users", :force => true do |t|
     t.string   "phone"
@@ -50,6 +70,7 @@ ActiveRecord::Schema.define(:version => 20120226070703) do
     t.datetime "created_at",                                :null => false
     t.datetime "updated_at",                                :null => false
     t.string   "pwd"
+    t.string   "role_type"
   end
 
   create_table "yis", :force => true do |t|

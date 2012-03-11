@@ -16,8 +16,9 @@ class WashController < ApplicationController
     clothes_id = session[:clothes_id]
     result_times = get_time(params[:get_date],params[:get_time])
     Order.transaction do
-      @order = Order.new(:get_time_begin=>result_times[0],:get_time_end=>result_times[1])
+      @order = Order.new(:get_time_begin=>result_times[0],:get_time_end=>result_times[1],:get_date=>params[:get_date])
       @order.clothes << Clothe.find(clothes_id)
+      @order.user = session[:user]
       @order.save
     end
 
@@ -37,6 +38,13 @@ class WashController < ApplicationController
     end
   end
 
+  #用户控制面板
+  def wash_panel
+    @user = session[:user]
+
+  end
+
+  private
   #根据页面传来的日期和时间段，返回开始时间和结束时间的数组
   #example
   #get_time("2012-02-12","1") =>  ["2012-02-12 09:00:00","2012-02-12 11:00:00"]

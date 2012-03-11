@@ -32,6 +32,7 @@
                  <%	 if session[:user] %>
                     用户:<%=session[:user].phone%> 您好。
                     <a href="/logout">退出</a>
+                    <p><a href="/wash/wash_panel">我的洗衣记录(控制面板)</a></p>
                  <%	 else %>
                     <tr>
                       <td>手机号码</td>
@@ -43,7 +44,7 @@
                       <td> <a href="javascript:login.submit();" class="">  登录  </a>&nbsp;&nbsp;&nbsp;&nbsp;</td>
                     </tr>
                     <tr>
-                      <td> <input type="checkbox" value="0"/>记录我的登录状态。</td>
+                      <td> <input type="checkbox" name="remember_me"value="0"/>记录我的登录状态。</td>
                     </tr>
                  <%	 end %>
               </table>

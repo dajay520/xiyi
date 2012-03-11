@@ -9,8 +9,8 @@ Xiyi::Application.routes.draw do
   end
   match "logout" => "users#logout"
   match "wash_list" =>  "wash#clothes_list"
-  match "wash_setting" => "wash#wash_setting"
-  match "wash_select" =>  "wash#wash_select"
+  post "wash_setting" => "wash#wash_setting"
+  post "wash_select" =>  "wash#wash_select"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

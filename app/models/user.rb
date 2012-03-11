@@ -1,5 +1,6 @@
 # encoding: utf-8
 class User < ActiveRecord::Base
+  has_many :orders
    attr_accessor :pwd_confirmation
 
    validates_presence_of :phone, :message => "手机号码不能为空"

@@ -21,6 +21,9 @@ class ApplicationController < ActionController::Base
     #    format.json { head :ok }
     #  end
     #end
+    if(cookies[:remember_me] and !session[:user])
+      session[:user] = User.find(cookies[:remember_me])
+    end
   end
 
 end
