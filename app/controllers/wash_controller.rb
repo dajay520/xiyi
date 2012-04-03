@@ -41,6 +41,7 @@ class WashController < ApplicationController
   #用户控制面板
   def wash_panel
     @user = session[:user]
+    @user.orders.reload
 
   end
 

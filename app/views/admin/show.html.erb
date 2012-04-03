@@ -1,0 +1,46 @@
+<div class="container_24">
+   <div class="grid_4">
+       <ul><a href="">收送列表</a></ul>
+     <ul><a href="">收送时段管理</a></ul>
+     <ul><a href=""></a></ul>
+   </div>
+
+  <div class="grid_20">
+    收送列表(<%= @dt%>)
+    <table id="tablecloth">
+      <tr>
+        <th>编号</th>
+        <th>收衣开始时间</th>
+        <th>收衣结束时间</th>
+        <th>收送数量</th>
+        <th>详情</th>
+      </tr>
+
+      <% @periods.each do |ord| %>
+          <tr>
+            <td><%= ord.id %></td>
+            <td><%= ord.begin_time.strftime('%H:%M') %></td>
+            <td><%= ord.end_time.strftime('%H:%M') %></td>
+            <td><%= ord.order_size %></td>
+            <td><a href="/admin/show_detail?get_date=<%= @dt %>&per_id=<%= ord.id %>">详情</a></td>
+          </tr>
+      <% end %>
+    </table>
+
+    <table id="tablecloth">
+        <tr>
+          <th>编号</th>
+          <th>收衣开始时间</th>
+          <th>收衣结束时间</th>
+        </tr>
+
+      <% @orders.each do |ord| %>
+          <tr>
+            <td><%= ord.id %></td>
+            <td><%= ord.get_time_begin %></td>
+            <td><%= ord.get_time_end %></td>
+          </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

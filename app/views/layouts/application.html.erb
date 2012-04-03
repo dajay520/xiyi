@@ -30,9 +30,14 @@
             <form action="/users/login" id="login" method="post">
               <table class="padding:200px 5px">
                  <%	 if session[:user] %>
+
                     用户:<%=session[:user].phone%> 您好。
                     <a href="/logout">退出</a>
-                    <p><a href="/wash/wash_panel">我的洗衣记录(控制面板)</a></p>
+                    <% unless session[:user].role_type == 'A' %>
+                        <p><a href="/wash/wash_panel">我的洗衣记录(控制面板)</a></p>
+                    <% else %>
+                        <p><a href="/admin/show">管理员控制台</a></p>
+                    <% end %>
                  <%	 else %>
                     <tr>
                       <td>手机号码</td>

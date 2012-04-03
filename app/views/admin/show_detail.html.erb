@@ -1,0 +1,47 @@
+<div class="container_24">
+  <div class="grid_4">
+    <ul><a href="">收送列表</a></ul>
+    <ul><a href="">收送时段管理</a></ul>
+    <ul><a href=""></a></ul>
+  </div>
+
+  <div class="grid_20">
+    收送列表>>>>订单明细
+
+    <table id="tablecloth">
+      <thead>
+      <tr>
+        <th>上门取送时间范围</th>
+        <th>衣服列表</th>
+        <th>地址</th>
+        <th>联系电话</th>
+        <th>处理进度</th>
+      </tr>
+      </thead>
+      <tbody>
+
+      <% @orders.each do |ord| %>
+          <tr>
+            <td>
+              <% if ord.get_date %>
+                  <%= ord.get_date.strftime('%Y-%m-%d')%>
+              <% end %>
+              <%= ord.get_time_begin.strftime('%H:%M') %> ~ <%= ord.get_time_end.strftime('%H:%M') %></td>
+            <td>
+              <% ord.clothes.each do |clo| %>
+                  <ul><%= clo.name %></ul>
+              <% end %>
+            </td>
+            <td>
+              <%= ord.user.address %>
+            </td>
+            <td>
+              <%= ord.user.phone %>
+            </td>
+          </tr>
+      <% end %>
+
+      </tbody>
+    </table>
+  </div>
+</div>
